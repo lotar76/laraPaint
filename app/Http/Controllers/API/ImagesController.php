@@ -26,18 +26,16 @@ class ImagesController extends BaseController
 	public function post(Request $request)
 	{
 		if ($_SERVER['REQUEST_METHOD'] == 'POST') { //TODO: прочитать нужно ли все время проверять?
-//			$validated = $request->validate([ //TODO: разобраться с валидатором
-//				'url' => ['required'],
-//				'title' => ['required'],
-//				'promt' => ['required'],
-//			]);
 
-
-
+			//	$validated = $request->validate([ //TODO: разобраться с валидатором
+			//'url' => ['required'],
+			//'title' => ['required'],
+			//'promt' => ['required'],
+			//]);
 
 
 			if (isset($request->url)) {
-				$url = str_replace('md2_webp','full_webp',$request->url);
+				$url = str_replace('md2_webp', 'full_webp', $request->url);
 				$date = now()->toDateString();
 				$contents = file_get_contents($url);
 				$mime_type = explode(":", get_headers($url)[2]);
@@ -57,8 +55,8 @@ class ImagesController extends BaseController
 					$suffix = '';
 					$unique_key = uniqid($prefix, true) . $suffix;
 
-					$file_name = $date .'-'.$unique_key .'.' . $extension;
-					if(Storage::put($file_name, $contents)){
+					$file_name = $date . '-' . $unique_key . '.' . $extension;
+					if (Storage::put($file_name, $contents)) {
 						$image = new Image;
 						$image->url = $url;
 						$image->title = $request->title; // TODO: можно ли сохрнять компактнее
@@ -72,9 +70,7 @@ class ImagesController extends BaseController
 					}
 
 
-
 				}
-
 
 
 			}
