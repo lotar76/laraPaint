@@ -9,6 +9,7 @@ class Image extends Model
 {
 	use HasFactory;
 
+
 	/**
 	 * @var mixed
 	 */
