@@ -17,6 +17,7 @@ use App\Http\Controllers\API\ImagesController;
 */
 
 Route::controller(ImagesController::class)->group(function () {
+//	Route::post('/image', 'post');
 	Route::post('/image', 'post');
 	Route::delete('/image/{params}', 'delete');
 	Route::get('/image', 'get');
